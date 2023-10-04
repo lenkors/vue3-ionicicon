@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "isolatedModules": true,
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "lib": ["dom", "esnext", "dom.iterable", "scripthost"],
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "esnext",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "declaration": true,
+    "paths": {
+      "@utils/*": ["src/utils/*"],
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["vite.config.*", "env.d.ts", "src/**/*", "src/**/*.vue"],
+  "exclude": ["node_modules", "src/utils/test"]
+}
