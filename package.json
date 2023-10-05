@@ -1,11 +1,11 @@
 {
-  "name": "vue3-ionicicon",
+  "name": "@Lenkors/vue3-ionicicon",
   "version": "1.0.0",
   "description": "Vue 3 ionic icons wrapper",
   "files": [
     "components/",
     "dist/",
-    "icons/"
+    "icon-ion/"
   ],
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.js",

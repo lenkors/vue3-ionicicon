@@ -3,7 +3,7 @@ name: Vue3-ionicicon Actions
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
