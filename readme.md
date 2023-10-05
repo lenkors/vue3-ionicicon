@@ -1,7 +1,7 @@
 [![License](https://img.shields.io/github/license/Lenkors/vue3-ionicicon.svg?maxAge=3600)](https://github.com/Lenkors/vue3-ionicicon)
 
 # Vue3 IonicIcon
-Icon package for Vue 3 made with typescript and IonicIcon. <br>
+Icons package for Vue 3 made with typescript and IonicIcons. <br>
 Icons from [IonicTeam/IonicIcons](https://github.com/ionic-team/ionicons)
 
 
