@@ -1,2 +1,10 @@
-export { addIcons } from './components/icon-ion/hooks/utils';
-export { default as IconIon } from './components/icon-ion/IconIon.vue';
+import IconIon from './components/icon-ion/IconIon.vue';
+
+const useIonIcon = {
+    install: function (app: { component: (a: string, b: unknown) => void }) {
+      app.component("icon-ion", IconIon);
+    },
+};
+  
+export { IconIon, useIonIcon };
+

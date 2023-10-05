@@ -1,4 +1,4 @@
-:host {
+#host {
   display: inline-block;
 
   width: 1em;
@@ -13,7 +13,7 @@
   font-size: 1rem;
 }
 
-:host .ionicon {
+#host .ionicon {
   stroke: currentColor;
 }
 
@@ -51,7 +51,7 @@ svg {
  * effect and override this fallback.
  */
 @supports (background: -webkit-named-image(i)) {
-  :host(.icon-rtl) .icon-inner {
+  .icon-rtl .icon-inner {
     transform: scaleX(-1);
   }
 }
@@ -63,19 +63,19 @@ svg {
  * changes, but it will at least
  * respect the dir on component load.
  */
-@supports not selector(:dir(rtl)) and selector(:host-context([dir='rtl'])) {
+/* @supports not selector(:dir(rtl)) and selector(:host-context([dir='rtl'])) {
   :host(.icon-rtl) .icon-inner {
     transform: scaleX(-1);
   }
-}
+} */
 
 /* :host-context is supported in chromium; :dir is supported in safari & firefox */
-:host(.flip-rtl):host-context([dir='rtl']) .icon-inner {
+.flip-rtl .icon-inner {
   transform: scaleX(-1);
 }
 
 @supports selector(:dir(rtl)) {
-  :host(.flip-rtl:dir(rtl)) .icon-inner {
+  .flip-rtl:dir(rtl) .icon-inner {
     transform: scaleX(-1);
   }
   /**
@@ -83,7 +83,7 @@ svg {
    * will always cause the icon to be flipped if the document
    * loads in RTL.
    */
-  :host(.flip-rtl:dir(ltr)) .icon-inner {
+  .flip-rtl:dir(ltr) .icon-inner {
     transform: scaleX(1);
   }
 }
@@ -92,11 +92,11 @@ svg {
  * -----------------------------------------------------------
  */
 
-:host(.icon-small) {
+.icon-small {
   font-size: 1.125rem !important;
 }
 
-:host(.icon-large) {
+.icon-large {
   font-size: 2rem !important;
 }
 
@@ -104,42 +104,42 @@ svg {
  * -----------------------------------------------------------
  */
 
-:host(.ion-color) {
+.ion-color {
   color: var(--ion-color-base) !important;
 }
 
-:host(.ion-color-primary) {
+.ion-color-primary {
   --ion-color-base: var(--ion-color-primary, #3880ff);
 }
 
-:host(.ion-color-secondary) {
+.ion-color-secondary {
   --ion-color-base: var(--ion-color-secondary, #0cd1e8);
 }
 
-:host(.ion-color-tertiary) {
+.ion-color-tertiary {
   --ion-color-base: var(--ion-color-tertiary, #f4a942);
 }
 
-:host(.ion-color-success) {
+.ion-color-success {
   --ion-color-base: var(--ion-color-success, #10dc60);
 }
 
-:host(.ion-color-warning) {
+.ion-color-warning {
   --ion-color-base: var(--ion-color-warning, #ffce00);
 }
 
-:host(.ion-color-danger) {
+.ion-color-danger {
   --ion-color-base: var(--ion-color-danger, #f14141);
 }
 
-:host(.ion-color-light) {
+.ion-color-light {
   --ion-color-base: var(--ion-color-light, #f4f5f8);
 }
 
-:host(.ion-color-medium) {
+.ion-color-medium {
   --ion-color-base: var(--ion-color-medium, #989aa2);
 }
 
-:host(.ion-color-dark) {
+.ion-color-dark {
   --ion-color-base: var(--ion-color-dark, #222428);
 }

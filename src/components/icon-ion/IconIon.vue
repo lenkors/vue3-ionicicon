@@ -1,18 +1,13 @@
 <template>
-    <div
-        :class="hostElemStyleClasses"
-        ref="hostElem"
-        id="host"
-        v-bind="{...inheritedAttributes}"
-      >
-          <div v-if="isBrowser && svgContent" class="icon-inner" v-html="svgContent"></div> 
-          <div v-else class="icon-inner"></div>
-    </div>
+  <svg :class="`${hostElemStyleClasses}`" :color="color" aria-hidden="true">
+    <use :href="symbolId" :fill="color" />
+  </svg>
 </template>
 <script setup lang="ts">
+import 'virtual:svg-icons-register';
 import { computed, ref, watchEffect } from 'vue';
 import './style/icon.css';
-import { getName, getUrl, inheritAttributes, isRTL } from './hooks/utils';
+import { getName, getUrl, isRTL } from './hooks/utils';
 import { getSvgContent, ioniconContent } from './hooks/request';
 
 const props = defineProps({
@@ -24,7 +19,8 @@ const props = defineProps({
         default: 'md',
     },
     /**
-     * The color to use for the background of the item.
+     * The color to use for the background of the item. 
+     * @example #000000
      */
     color: String,
     /**
@@ -84,72 +80,25 @@ const props = defineProps({
 
 });
 
-const io = ref<IntersectionObserver>();
 const iconName = ref<string | null>(null);
-const inheritedAttributes = ref<{[k: string]: any}>();
 const svgContent = ref('');
 const isVisible = ref(false);
 const el = ref<HTMLElement>();
-const hostElem = ref<HTMLElement | null>()
 
-const isBrowser = computed(() => import.meta.env.SSR);
-const ionMode = computed(() => (import.meta.env.SSR && typeof document !== 'undefined' && document.documentElement.getAttribute('mode')) || 'md');
+const symbolId = computed(() => `#${props.name}`)
+const ionMode = computed(() => (!import.meta.env.SSR && typeof document !== 'undefined' && document.documentElement.getAttribute('mode')) || 'md');
 const shouldAutoFlip = computed(() => iconName.value
       ? (iconName.value.includes('arrow') || iconName.value.includes('chevron')) && props.flipRtl !== false
       : false);
 const shouldBeFlippable = computed(() => props.flipRtl ?? shouldAutoFlip.value);
-const hostElemStyleClasses = computed(() => `${createColorClasses(props.color)} ${props.mode ?? 'md'} ${!!props.size ? `icon-${props.size}` : ''} 
-          ${!!shouldBeFlippable ? 'flip-rtl' : ''}
-          ${shouldBeFlippable && isRTL(el.value) ? 'icon-rtl' : ''} ionicon host-item
-        `)
-// @ts-ignore
-const componentWillLoad = () => {
-    if (el.value) inheritedAttributes.value = inheritAttributes(el.value, ['aria-label']);
-}
-
-// @ts-ignore
-const connectedCallback = () => {
-    // purposely do not return the promise here because loading
-    // the svg file should not hold up loading the app
-    // only load the svg if it's visible
-    if (el.value) waitUntilVisible(el.value, '50px', () => {
-      isVisible.value = true;
-      loadIcon();
-    });
-  }
-
-// @ts-ignore
-const disconnectedCallback = () => {
-    if (io.value) {
-      io.value.disconnect();
-      io.value = undefined;
-    }
-  }
+const hostElemStyleClasses = computed(() => `${createColorClasses(props.color)} ${props.mode ?? 'md'} ${!!props.size ? `icon-${props.size}` : ''} ${!!shouldBeFlippable ? 'flip-rtl' : ''} ${shouldBeFlippable && isRTL(el.value) ? 'icon-rtl' : ''} ionicon host-item`)
 
 const createColorClasses = (color: string | undefined) => {
   return !!color ? `ion-color ion-color-${color}` : 'ion-color';
 };
 
-const waitUntilVisible = (el: HTMLElement, rootMargin: string, cb: () => void) =>  {
-    if (import.meta.env.SSR && props.lazy && typeof window !== 'undefined' && (window as any).IntersectionObserver) {
-      const ioLocal = (io.value = new (window as any).IntersectionObserver((data: IntersectionObserverEntry[]) => {
-          if (data[0].isIntersecting) {
-            ioLocal.disconnect();
-            io.value = undefined;
-            cb();
-          }
-        }, { rootMargin }));
-
-        ioLocal.observe(el);
-    } else {
-      // browser doesn't support IntersectionObserver
-      // so just fallback to always show it
-      cb();
-    }
-}
-
 const loadIcon = () => {
-    if (import.meta.env.SSR && isVisible.value) {
+    if (!import.meta.env.SSR && isVisible.value) {
       const url = getUrl({src: props.src as string, name: props.name as string, icon: props.icon, mode: ionMode.value, ios: props.ios as string, md: props.md as string});
 
       if (url) {

@@ -10,6 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "lib": ["dom", "esnext", "dom.iterable", "scripthost"],
+    "types": ["vite-plugin-svg-icons/client"],
     "moduleResolution": "node",
     "module": "esnext",
     "target": "esnext",
