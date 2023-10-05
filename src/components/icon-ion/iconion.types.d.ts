@@ -64,7 +64,7 @@ declare global {
         "ion-icon": HTMLIonIconElement;
     }
 }
-declare namespace LocalJSX {
+declare namespace IonIconComponent {
     interface IonIcon {
         /**
           * The color to use for the background of the item.
@@ -116,4 +116,4 @@ declare namespace LocalJSX {
         "ion-icon": IonIcon;
     }
 }
-export { LocalJSX as JSX };
+export { IonIconComponent as IonIcon };

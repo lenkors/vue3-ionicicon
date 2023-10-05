@@ -2,9 +2,10 @@
     <div
         :class="hostElemStyleClasses"
         ref="hostElem"
+        id="host"
         v-bind="{...inheritedAttributes}"
       >
-          <div v-if="isBrowser && svgContent" class="icon-inner" :innerHTML="svgContent"></div> 
+          <div v-if="isBrowser && svgContent" class="icon-inner" v-html="svgContent"></div> 
           <div v-else class="icon-inner"></div>
     </div>
 </template>
@@ -99,7 +100,7 @@ const shouldAutoFlip = computed(() => iconName.value
 const shouldBeFlippable = computed(() => props.flipRtl ?? shouldAutoFlip.value);
 const hostElemStyleClasses = computed(() => `${createColorClasses(props.color)} ${props.mode ?? 'md'} ${!!props.size ? `icon-${props.size}` : ''} 
           ${!!shouldBeFlippable ? 'flip-rtl' : ''}
-          ${shouldBeFlippable && isRTL(el.value) ? 'icon-rtl' : ''}
+          ${shouldBeFlippable && isRTL(el.value) ? 'icon-rtl' : ''} ionicon host-item
         `)
 // @ts-ignore
 const componentWillLoad = () => {
@@ -126,7 +127,7 @@ const disconnectedCallback = () => {
   }
 
 const createColorClasses = (color: string | undefined) => {
-  return color ? `ion-color ion-color-${color}` : null;
+  return !!color ? `ion-color ion-color-${color}` : 'ion-color';
 };
 
 const waitUntilVisible = (el: HTMLElement, rootMargin: string, cb: () => void) =>  {
