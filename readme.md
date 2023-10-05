@@ -5,7 +5,7 @@ Icons package for Vue 3 made with typescript and IonicIcons. <br>
 Icons from [IonicTeam/IonicIcons](https://github.com/ionic-team/ionicons)
 
 
-<!-- ## Getting Started
+## Getting Started
 1. Install the package.
 - npm
 ```
@@ -15,6 +15,6 @@ npm install --save Lenkors/vue3-ionicicon
 - Yarn
 ```
 yarn add Lenkors/vue3-ionicicon
-``` -->
+```
 
 
