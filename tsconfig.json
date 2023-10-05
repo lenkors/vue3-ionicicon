@@ -24,6 +24,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["vite.config.*", "env.d.ts", "src/**/*", "src/**/*.vue"],
-  "exclude": ["node_modules", "src/utils/test"]
+  "include": ["vite.config.*", "env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.d.ts"],
+  "exclude": ["node_modules"]
 }

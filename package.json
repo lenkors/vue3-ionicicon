@@ -1,13 +1,13 @@
 {
   "name": "@lenkors/vue3-ionicicon",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Vue 3 ionic icons wrapper",
   "files": [
     "dist"
   ],
   "main": "./dist/vue3-ionicicon.umd.js",
   "module": "./dist/vue3-ionicicon.es.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/src/index.d.ts",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@Lenkors"
   },

@@ -105,7 +105,7 @@ declare namespace IonIconComponent {
         "src"?: string;
     }
     interface IntrinsicElements {
-        "ion-icon": IonIcon;
+        "ion-icon": IconIon;
     }
 }
 export { IonIconComponent };

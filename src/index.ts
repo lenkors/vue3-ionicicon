@@ -1,10 +1,11 @@
 import IconIon from './components/icon-ion/IconIon.vue';
+import type { App } from 'vue';
 
-const useIonIcon = {
-    install: function (app: { component: (a: string, b: unknown) => void }) {
+const useIconIon = {
+    install: function (app: App) {
       app.component("icon-ion", IconIon);
     },
 };
   
-export { IconIon, useIonIcon };
+export { IconIon, useIconIon };
 
