@@ -1,6 +1,6 @@
 {
   "name": "@Lenkors/vue3-ionicicon",
-  "version": "1.0.2",
+  "version": "1.0.2a",
   "description": "Vue 3 ionic icons wrapper",
   "files": [
     "dist"
